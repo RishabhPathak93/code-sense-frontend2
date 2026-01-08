@@ -1,5 +1,5 @@
 import { DotsLoader } from '@/components/atomic/loader';
-import ScanUpdate from '@/components/update/Scanupdate';
+import ScanUpdate from '@/components/update/ScanUpdate';
 import { useScanDetails } from '@/hooks/use-scans';
 import { createFileRoute, useParams } from '@tanstack/react-router'
 

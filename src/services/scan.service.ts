@@ -1,8 +1,9 @@
 import { BaseApiClient } from "@/lib/api";
-import type { CreateScanDetails, ScanDetails, ScanListResponse } from "@/types/scan";
+import type { CreateGithubScans, CreateScanDetails, ScanDetails, ScanListResponse } from "@/types/scan";
 
 class ScanService extends BaseApiClient {
   async getScanById(scanId: string): Promise<ScanDetails> {
+    console.log("Lol Running")
     return this.get<ScanDetails>(`api/scans/${scanId}`);
   }
 
@@ -17,6 +18,10 @@ class ScanService extends BaseApiClient {
     return this.post<ScanDetails>("api/scans/create/", formData);
   }
 
+
+  async startGithubScan(data: CreateGithubScans): Promise<ScanDetails> {
+    return this.post<ScanDetails>("api/scans/create/", data);
+  }
 
   async getScanByProject(projectId: string, params?: { page?: number; limit?: number; search?: string }): Promise<ScanListResponse> {
     return this.get<any>(`api/scans/project/${projectId}/`, params);
@@ -34,3 +39,4 @@ class ScanService extends BaseApiClient {
 }
 
 export const scanService = new ScanService();
+ 

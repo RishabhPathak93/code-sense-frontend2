@@ -48,7 +48,6 @@ const DashboardCards = ({ data }: { data: StatCountDetails | undefined }) => {
           className={`
             relative group cursor-pointer
             rounded-2xl p-6 
-            shadow-sm hover:shadow-lg dark:shadow-black/20 dark:hover:shadow-black/40
             overflow-hidden
           `}
         >

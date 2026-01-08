@@ -485,30 +485,6 @@ const AccessControlSystem = () => {
         </div>
       </Card>
  
-      {/* Permission Summary */}
-      <Card className="mt-6 rounded-lg shadow p-6">
-        <h3 className="text-lg font-semibold mb-2">Current Configuration</h3>
-        <div className="p-4 rounded-md bg-[#e5e5e5] dark:bg-[#595959]">
-          <pre className="text-sm whitespace-pre-wrap">
-            {JSON.stringify({
-              role: selectedRole,
-              permissions: localPermissions,
-              workflow_compliance: {
-                project_operations_enabled: localPermissions['view_projects'] && localPermissions['create_project'],
-                scan_operations_enabled: localPermissions['view_scans'] && localPermissions['create_scan'],
-                finding_operations_enabled: localPermissions['view_findings'] && localPermissions['validate_finding'],
-                report_operations_enabled: localPermissions['view_reports'] && localPermissions['create_report'],
-                full_workflow_enabled: localPermissions['view_projects'] &&
-                                     localPermissions['view_scans'] &&
-                                     localPermissions['view_findings'] &&
-                                     localPermissions['validate_finding'] &&
-                                     localPermissions['view_reports'] &&
-                                     localPermissions['create_report']
-              }
-            }, null, 2)}
-          </pre>
-        </div>
-      </Card>
     </div>
   );
 };

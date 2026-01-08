@@ -17,14 +17,16 @@ import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticate
 import { Route as AuthLoginRouteImport } from './routes/_auth/login'
 import { Route as AuthenticatedUsersNewRouteImport } from './routes/_authenticated/users/new'
 import { Route as AuthenticatedUsersListRouteImport } from './routes/_authenticated/users/list'
-import { Route as AuthenticatedScanStartRouteImport } from './routes/_authenticated/scan/start'
 import { Route as AuthenticatedProjectNewRouteImport } from './routes/_authenticated/project/new'
 import { Route as AuthenticatedProjectListRouteImport } from './routes/_authenticated/project/list'
 import { Route as AuthenticatedFindingFindingIdRouteImport } from './routes/_authenticated/finding/$findingId'
 import { Route as AuthenticatedScanScanIdRouteRouteImport } from './routes/_authenticated/scan/$scanId/route'
+import { Route as AuthenticatedScanStartIndexRouteImport } from './routes/_authenticated/scan/start/index'
 import { Route as AuthenticatedScanScanIdIndexRouteImport } from './routes/_authenticated/scan/$scanId/index'
 import { Route as AuthenticatedProjectProjectIdIndexRouteImport } from './routes/_authenticated/project/$projectId/index'
 import { Route as AuthenticatedUsersUserIdEditRouteImport } from './routes/_authenticated/users/$userId/edit'
+import { Route as AuthenticatedScanStartUploadzipRouteImport } from './routes/_authenticated/scan/start/uploadzip'
+import { Route as AuthenticatedScanStartGithubrepoRouteImport } from './routes/_authenticated/scan/start/githubrepo'
 import { Route as AuthenticatedScanScanIdUpdatesRouteImport } from './routes/_authenticated/scan/$scanId/updates'
 import { Route as AuthenticatedScanScanIdFindingsRouteImport } from './routes/_authenticated/scan/$scanId/findings'
 import { Route as AuthenticatedProjectProjectIdEditRouteImport } from './routes/_authenticated/project/$projectId/edit'
@@ -67,11 +69,6 @@ const AuthenticatedUsersListRoute = AuthenticatedUsersListRouteImport.update({
   path: '/users/list',
   getParentRoute: () => AuthenticatedRoute,
 } as any)
-const AuthenticatedScanStartRoute = AuthenticatedScanStartRouteImport.update({
-  id: '/scan/start',
-  path: '/scan/start',
-  getParentRoute: () => AuthenticatedRoute,
-} as any)
 const AuthenticatedProjectNewRoute = AuthenticatedProjectNewRouteImport.update({
   id: '/project/new',
   path: '/project/new',
@@ -95,6 +92,12 @@ const AuthenticatedScanScanIdRouteRoute =
     path: '/scan/$scanId',
     getParentRoute: () => AuthenticatedRoute,
   } as any)
+const AuthenticatedScanStartIndexRoute =
+  AuthenticatedScanStartIndexRouteImport.update({
+    id: '/scan/start/',
+    path: '/scan/start/',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
 const AuthenticatedScanScanIdIndexRoute =
   AuthenticatedScanScanIdIndexRouteImport.update({
     id: '/',
@@ -111,6 +114,18 @@ const AuthenticatedUsersUserIdEditRoute =
   AuthenticatedUsersUserIdEditRouteImport.update({
     id: '/users/$userId/edit',
     path: '/users/$userId/edit',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedScanStartUploadzipRoute =
+  AuthenticatedScanStartUploadzipRouteImport.update({
+    id: '/scan/start/uploadzip',
+    path: '/scan/start/uploadzip',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedScanStartGithubrepoRoute =
+  AuthenticatedScanStartGithubrepoRouteImport.update({
+    id: '/scan/start/githubrepo',
+    path: '/scan/start/githubrepo',
     getParentRoute: () => AuthenticatedRoute,
   } as any)
 const AuthenticatedScanScanIdUpdatesRoute =
@@ -141,15 +156,17 @@ export interface FileRoutesByFullPath {
   '/finding/$findingId': typeof AuthenticatedFindingFindingIdRoute
   '/project/list': typeof AuthenticatedProjectListRoute
   '/project/new': typeof AuthenticatedProjectNewRoute
-  '/scan/start': typeof AuthenticatedScanStartRoute
   '/users/list': typeof AuthenticatedUsersListRoute
   '/users/new': typeof AuthenticatedUsersNewRoute
   '/project/$projectId/edit': typeof AuthenticatedProjectProjectIdEditRoute
   '/scan/$scanId/findings': typeof AuthenticatedScanScanIdFindingsRoute
   '/scan/$scanId/updates': typeof AuthenticatedScanScanIdUpdatesRoute
+  '/scan/start/githubrepo': typeof AuthenticatedScanStartGithubrepoRoute
+  '/scan/start/uploadzip': typeof AuthenticatedScanStartUploadzipRoute
   '/users/$userId/edit': typeof AuthenticatedUsersUserIdEditRoute
   '/project/$projectId': typeof AuthenticatedProjectProjectIdIndexRoute
   '/scan/$scanId/': typeof AuthenticatedScanScanIdIndexRoute
+  '/scan/start': typeof AuthenticatedScanStartIndexRoute
 }
 export interface FileRoutesByTo {
   '/login': typeof AuthLoginRoute
@@ -159,15 +176,17 @@ export interface FileRoutesByTo {
   '/finding/$findingId': typeof AuthenticatedFindingFindingIdRoute
   '/project/list': typeof AuthenticatedProjectListRoute
   '/project/new': typeof AuthenticatedProjectNewRoute
-  '/scan/start': typeof AuthenticatedScanStartRoute
   '/users/list': typeof AuthenticatedUsersListRoute
   '/users/new': typeof AuthenticatedUsersNewRoute
   '/project/$projectId/edit': typeof AuthenticatedProjectProjectIdEditRoute
   '/scan/$scanId/findings': typeof AuthenticatedScanScanIdFindingsRoute
   '/scan/$scanId/updates': typeof AuthenticatedScanScanIdUpdatesRoute
+  '/scan/start/githubrepo': typeof AuthenticatedScanStartGithubrepoRoute
+  '/scan/start/uploadzip': typeof AuthenticatedScanStartUploadzipRoute
   '/users/$userId/edit': typeof AuthenticatedUsersUserIdEditRoute
   '/project/$projectId': typeof AuthenticatedProjectProjectIdIndexRoute
   '/scan/$scanId': typeof AuthenticatedScanScanIdIndexRoute
+  '/scan/start': typeof AuthenticatedScanStartIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -181,15 +200,17 @@ export interface FileRoutesById {
   '/_authenticated/finding/$findingId': typeof AuthenticatedFindingFindingIdRoute
   '/_authenticated/project/list': typeof AuthenticatedProjectListRoute
   '/_authenticated/project/new': typeof AuthenticatedProjectNewRoute
-  '/_authenticated/scan/start': typeof AuthenticatedScanStartRoute
   '/_authenticated/users/list': typeof AuthenticatedUsersListRoute
   '/_authenticated/users/new': typeof AuthenticatedUsersNewRoute
   '/_authenticated/project/$projectId/edit': typeof AuthenticatedProjectProjectIdEditRoute
   '/_authenticated/scan/$scanId/findings': typeof AuthenticatedScanScanIdFindingsRoute
   '/_authenticated/scan/$scanId/updates': typeof AuthenticatedScanScanIdUpdatesRoute
+  '/_authenticated/scan/start/githubrepo': typeof AuthenticatedScanStartGithubrepoRoute
+  '/_authenticated/scan/start/uploadzip': typeof AuthenticatedScanStartUploadzipRoute
   '/_authenticated/users/$userId/edit': typeof AuthenticatedUsersUserIdEditRoute
   '/_authenticated/project/$projectId/': typeof AuthenticatedProjectProjectIdIndexRoute
   '/_authenticated/scan/$scanId/': typeof AuthenticatedScanScanIdIndexRoute
+  '/_authenticated/scan/start/': typeof AuthenticatedScanStartIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -202,15 +223,17 @@ export interface FileRouteTypes {
     | '/finding/$findingId'
     | '/project/list'
     | '/project/new'
-    | '/scan/start'
     | '/users/list'
     | '/users/new'
     | '/project/$projectId/edit'
     | '/scan/$scanId/findings'
     | '/scan/$scanId/updates'
+    | '/scan/start/githubrepo'
+    | '/scan/start/uploadzip'
     | '/users/$userId/edit'
     | '/project/$projectId'
     | '/scan/$scanId/'
+    | '/scan/start'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/login'
@@ -220,15 +243,17 @@ export interface FileRouteTypes {
     | '/finding/$findingId'
     | '/project/list'
     | '/project/new'
-    | '/scan/start'
     | '/users/list'
     | '/users/new'
     | '/project/$projectId/edit'
     | '/scan/$scanId/findings'
     | '/scan/$scanId/updates'
+    | '/scan/start/githubrepo'
+    | '/scan/start/uploadzip'
     | '/users/$userId/edit'
     | '/project/$projectId'
     | '/scan/$scanId'
+    | '/scan/start'
   id:
     | '__root__'
     | '/_auth'
@@ -241,15 +266,17 @@ export interface FileRouteTypes {
     | '/_authenticated/finding/$findingId'
     | '/_authenticated/project/list'
     | '/_authenticated/project/new'
-    | '/_authenticated/scan/start'
     | '/_authenticated/users/list'
     | '/_authenticated/users/new'
     | '/_authenticated/project/$projectId/edit'
     | '/_authenticated/scan/$scanId/findings'
     | '/_authenticated/scan/$scanId/updates'
+    | '/_authenticated/scan/start/githubrepo'
+    | '/_authenticated/scan/start/uploadzip'
     | '/_authenticated/users/$userId/edit'
     | '/_authenticated/project/$projectId/'
     | '/_authenticated/scan/$scanId/'
+    | '/_authenticated/scan/start/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -315,13 +342,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedUsersListRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
-    '/_authenticated/scan/start': {
-      id: '/_authenticated/scan/start'
-      path: '/scan/start'
-      fullPath: '/scan/start'
-      preLoaderRoute: typeof AuthenticatedScanStartRouteImport
-      parentRoute: typeof AuthenticatedRoute
-    }
     '/_authenticated/project/new': {
       id: '/_authenticated/project/new'
       path: '/project/new'
@@ -350,6 +370,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedScanScanIdRouteRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/scan/start/': {
+      id: '/_authenticated/scan/start/'
+      path: '/scan/start'
+      fullPath: '/scan/start'
+      preLoaderRoute: typeof AuthenticatedScanStartIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/scan/$scanId/': {
       id: '/_authenticated/scan/$scanId/'
       path: '/'
@@ -369,6 +396,20 @@ declare module '@tanstack/react-router' {
       path: '/users/$userId/edit'
       fullPath: '/users/$userId/edit'
       preLoaderRoute: typeof AuthenticatedUsersUserIdEditRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/scan/start/uploadzip': {
+      id: '/_authenticated/scan/start/uploadzip'
+      path: '/scan/start/uploadzip'
+      fullPath: '/scan/start/uploadzip'
+      preLoaderRoute: typeof AuthenticatedScanStartUploadzipRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/scan/start/githubrepo': {
+      id: '/_authenticated/scan/start/githubrepo'
+      path: '/scan/start/githubrepo'
+      fullPath: '/scan/start/githubrepo'
+      preLoaderRoute: typeof AuthenticatedScanStartGithubrepoRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
     '/_authenticated/scan/$scanId/updates': {
@@ -431,12 +472,14 @@ interface AuthenticatedRouteChildren {
   AuthenticatedFindingFindingIdRoute: typeof AuthenticatedFindingFindingIdRoute
   AuthenticatedProjectListRoute: typeof AuthenticatedProjectListRoute
   AuthenticatedProjectNewRoute: typeof AuthenticatedProjectNewRoute
-  AuthenticatedScanStartRoute: typeof AuthenticatedScanStartRoute
   AuthenticatedUsersListRoute: typeof AuthenticatedUsersListRoute
   AuthenticatedUsersNewRoute: typeof AuthenticatedUsersNewRoute
   AuthenticatedProjectProjectIdEditRoute: typeof AuthenticatedProjectProjectIdEditRoute
+  AuthenticatedScanStartGithubrepoRoute: typeof AuthenticatedScanStartGithubrepoRoute
+  AuthenticatedScanStartUploadzipRoute: typeof AuthenticatedScanStartUploadzipRoute
   AuthenticatedUsersUserIdEditRoute: typeof AuthenticatedUsersUserIdEditRoute
   AuthenticatedProjectProjectIdIndexRoute: typeof AuthenticatedProjectProjectIdIndexRoute
+  AuthenticatedScanStartIndexRoute: typeof AuthenticatedScanStartIndexRoute
 }
 
 const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
@@ -448,14 +491,16 @@ const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
   AuthenticatedFindingFindingIdRoute: AuthenticatedFindingFindingIdRoute,
   AuthenticatedProjectListRoute: AuthenticatedProjectListRoute,
   AuthenticatedProjectNewRoute: AuthenticatedProjectNewRoute,
-  AuthenticatedScanStartRoute: AuthenticatedScanStartRoute,
   AuthenticatedUsersListRoute: AuthenticatedUsersListRoute,
   AuthenticatedUsersNewRoute: AuthenticatedUsersNewRoute,
   AuthenticatedProjectProjectIdEditRoute:
     AuthenticatedProjectProjectIdEditRoute,
+  AuthenticatedScanStartGithubrepoRoute: AuthenticatedScanStartGithubrepoRoute,
+  AuthenticatedScanStartUploadzipRoute: AuthenticatedScanStartUploadzipRoute,
   AuthenticatedUsersUserIdEditRoute: AuthenticatedUsersUserIdEditRoute,
   AuthenticatedProjectProjectIdIndexRoute:
     AuthenticatedProjectProjectIdIndexRoute,
+  AuthenticatedScanStartIndexRoute: AuthenticatedScanStartIndexRoute,
 }
 
 const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
