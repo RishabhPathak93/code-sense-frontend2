@@ -1,8 +1,8 @@
 import axios, { type AxiosInstance, type AxiosResponse, AxiosError } from 'axios';
 
-const ip = window.location.hostname;
-const port = 8585; // adjust if needed
-export const BACKEND_URL = `http://${ip}:${port}`;
+// const ip = window.location.hostname;
+// const port = 8585; // adjust if needed
+export const BACKEND_URL = `https://toadless-wynona-deftly.ngrok-free.dev`;
 
 // Base API Client with common functionality
 export class BaseApiClient {
